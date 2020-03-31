@@ -1,8 +1,10 @@
 #include "nand.h"
 
-clNAND::clNAND()
+clNAND::clNAND(int iXval,int iYval,int iInputCount)
 {
-
+    this->setX(iXval);
+    this->setY(iYval);
+    this->iInputCount = iInputCount;
 }
 
 clNAND::~clNAND()

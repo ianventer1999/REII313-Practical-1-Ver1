@@ -9,7 +9,7 @@
 class clAND: public clGate
 {
     public:
-        clAND();
+        clAND(int iXval,int iYval,int iInputCount);
         virtual ~clAND();
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);

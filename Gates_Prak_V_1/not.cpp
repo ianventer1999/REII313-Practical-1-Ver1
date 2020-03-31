@@ -1,8 +1,10 @@
 #include "not.h"
 
-clNOT::clNOT()
+clNOT::clNOT(int iXval,int iYval,int iInputCount)
 {
-
+    this->setX(iXval);
+    this->setY(iYval);
+    this->iInputCount = iInputCount;
 }
 
 clNOT::~clNOT()

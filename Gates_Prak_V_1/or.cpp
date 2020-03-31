@@ -1,8 +1,10 @@
 #include "or.h"
 
-clOR::clOR()
+clOR::clOR(int iXval,int iYval,int iInputCount)
 {
-
+    this->setX(iXval);
+    this->setY(iYval);
+    this->iInputCount = iInputCount;
 }
 
 clOR::~clOR()

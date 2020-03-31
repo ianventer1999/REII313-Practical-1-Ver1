@@ -6,7 +6,7 @@
 class clXOR: public clGate
 {
     public:
-        clXOR();
+        clXOR(int iXval,int iYval,int iInputCount);
         virtual ~clXOR();
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);

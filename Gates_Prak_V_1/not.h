@@ -6,7 +6,7 @@
 class clNOT: public clGate
 {
     public:
-        clNOT();
+        clNOT(int iXval,int iYval,int iInputCount);
         virtual ~clNOT();
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);

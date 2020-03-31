@@ -7,7 +7,7 @@
 class clNOR: public clGate
 {
     public:
-        clNOR();
+        clNOR(int iXval,int iYval,int iInputCount);
         virtual ~clNOR();
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
