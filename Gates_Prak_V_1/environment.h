@@ -7,7 +7,7 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QPainter>
-
+#include <QList>
 #include "and.h"
 #include "or.h"
 #include "not.h"
@@ -29,7 +29,8 @@ class Environment : public QGraphicsScene
     public slots:
         void update_scene();
     private:
-        clGate  *Gates[10];
+        QList<clGate*> Gates;
+        //clGate  *Gates[10];
         QTimer  *update_timer;
         int     iInputs;
 };

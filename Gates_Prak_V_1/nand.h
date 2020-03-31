@@ -11,7 +11,7 @@
 class clNAND: public clGate
 {
     public:
-        clNAND();
+        clNAND(int iXval,int iYval,int iInputCount);
         virtual ~clNAND();
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);

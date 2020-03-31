@@ -1,8 +1,10 @@
 #include "xnor.h"
 
-clXNOR::clXNOR()
+clXNOR::clXNOR(int iXval,int iYval,int iInputCount)
 {
-
+    this->setX(iXval);
+    this->setY(iYval);
+    this->iInputCount = iInputCount;
 }
 
 clXNOR::~clXNOR()

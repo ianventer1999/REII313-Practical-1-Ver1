@@ -1,8 +1,10 @@
 #include "and.h"
 
-clAND::clAND()
+clAND::clAND(int iXval,int iYval,int iInputCount)
 {
-
+    this->setX(iXval);
+    this->setY(iYval);
+    this->iInputCount = iInputCount;
 }
 
 clAND::~clAND()
