@@ -1,5 +1,5 @@
 #include "environment.h"
-
+int GatePlace;
 Environment::Environment()
 {
 
@@ -51,7 +51,41 @@ void Environment ::keyPressEvent(QKeyEvent *event)
 {
 
 
+    if (event->key() ==Qt::Key_1)
+    {
+      GatePlace = 1;
+    }
+    if (event->key() ==Qt::Key_2)
+    {
+      GatePlace = 2;
+    }
+    if (event->key() ==Qt::Key_3)
+    {
+      GatePlace = 3;
+    }
+    if (event->key() ==Qt::Key_4)
+    {
+      GatePlace = 4;
+    }
+    if (event->key() ==Qt::Key_5)
+    {
+      GatePlace = 5;
+    }
+    if (event->key() ==Qt::Key_6)
+    {
+      GatePlace = 6;
+    }
+    if (event->key() ==Qt::Key_7)
+    {
+      GatePlace = 7;
+    }
+
+
+
 }
+
+
+
 
 void Environment ::keyReleaseEvent(QKeyEvent *event)
 {
@@ -60,7 +94,7 @@ void Environment ::keyReleaseEvent(QKeyEvent *event)
 
 void Environment ::update_scene()
 {
-    if (this->iInputs < 6)
+   /* if (this->iInputs < 6)
     {
         this->iInputs++;
     }
@@ -74,7 +108,7 @@ void Environment ::update_scene()
         b->iInputCount = this->iInputs;
         this->removeItem(b);
         this->addItem(b);
-    }
+    }*/
 }
 
 void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -84,14 +118,47 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if(event->button() == Qt::LeftButton)
     {
 
-        for (auto b :this->GatesDefault)
+        switch(GatePlace)
         {
-           // qDebug() << b->pos() ;
-            if(((event->scenePos().x())>(b->pos().x())-100)&&((event->scenePos().x())<(b->pos().x())+100))
+            case 1:
             {
-               b->hide();
-            }
+                Gates.append(new clAND(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+
+            case 2:
+            {
+                Gates.append(new clNAND(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+            case 3:
+            {
+                Gates.append(new clOR(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+            case 4:
+            {
+                Gates.append(new clNOR(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+            case 5:
+            {
+                Gates.append(new clXOR(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+            case 6:
+            {
+                Gates.append(new clXNOR(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+            case 7:
+            {
+                Gates.append(new clNOT(event->scenePos().x(),event->scenePos().y(),2));
+                this->addItem(Gates.last());
+            }break;
+
 
         }
+
     }
 }

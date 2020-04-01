@@ -25,6 +25,7 @@ class Environment : public QGraphicsScene
         Environment();
         ~Environment();
         void keyPressEvent(QKeyEvent *event);
+
         void keyReleaseEvent(QKeyEvent *event);
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
     public slots:
