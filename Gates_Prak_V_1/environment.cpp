@@ -3,36 +3,39 @@
 Environment::Environment()
 {
 
-    this->iInputs = 0;   
-    this->Gates.append(new clAND(0,0,this->iInputs));
-    this->addItem(Gates[0]);
+    //Add Gates with instructions on how to use
 
-    this->iInputs = 0;
-    this->Gates.append(new clNAND(0,100,this->iInputs));
-    //this->Gates[1]->iInputCount = this->iInputs;
-    this->addItem(Gates[1]);
+        GatesDefault.append(new clAND(-1000,-1000,2));
+        GatesDefault.append(new clNAND(-800,-1000,2));
+        GatesDefault.append(new clOR(-600,-1000,2));
+        GatesDefault.append(new clNOR(-400,-1000,2));
+        GatesDefault.append(new clXOR(-200,-1000,2));
+        GatesDefault.append(new clXNOR(0,-1000,2));
+        GatesDefault.append(new clNOT(200,-1000,2));
 
-    this->iInputs = 0;
-    this->Gates.append(new clOR(0,200,this->iInputs));
-    this->addItem(Gates[2]);
-
-    this->iInputs = 0;
-    this->Gates.append(new clNOR(0,300,this->iInputs));
-    this->addItem(Gates[3]);
-
-    this->iInputs = 0;
-    this->Gates.append(new clXNOR(0,400,this->iInputs));
-    this->addItem(Gates[4]);
-
-    this->iInputs = 0;
-    this->Gates.append(new clXOR(0,500,this->iInputs));
-    this->addItem(Gates[5]);
-
-
-    this->iInputs = 0;
-    this->Gates.append(new clNOT(0,600,this->iInputs));
-    this->addItem(Gates[6]);
-
+        for (auto b :this->GatesDefault)
+        {
+            this->addItem(b);
+        }
+        /*this->addItem(new clAND(-1000,-1000,2));
+        this->addItem(new clNAND(-800,-1000,2));
+        this->addItem(new clOR(-600,-1000,2));
+        this->addItem(new clNOR(-400,-1000,2));
+        this->addItem(new clXOR(-200,-1000,2));
+        this->addItem(new clXNOR(0,-1000,2));
+        this->addItem(new clNOT(200,-1000,2));*/
+        QList <QGraphicsTextItem*> text ;//= addText("Hotkey =1");
+        text.append(addText("Hotkey 1"));
+        text.append(addText("Hotkey 2"));
+        text.append(addText("Hotkey 3"));
+        text.append(addText("Hotkey 4"));
+        text.append(addText("Hotkey 5"));
+        text.append(addText("Hotkey 6"));
+        text.append(addText("Hotkey 7"));
+        for(int i=0;i<text.size();++i)
+        {
+            text[i]->setPos(-1000+200*i,-950);
+        }
 
     this->update_timer = new QTimer(this);
     connect(this->update_timer, SIGNAL(timeout()),this,SLOT(update_scene()));
@@ -71,5 +74,24 @@ void Environment ::update_scene()
         b->iInputCount = this->iInputs;
         this->removeItem(b);
         this->addItem(b);
+    }
+}
+
+void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    // qDebug() << event->scenePos() ;
+
+    if(event->button() == Qt::LeftButton)
+    {
+
+        for (auto b :this->GatesDefault)
+        {
+           // qDebug() << b->pos() ;
+            if(((event->scenePos().x())>(b->pos().x())-100)&&((event->scenePos().x())<(b->pos().x())+100))
+            {
+               b->hide();
+            }
+
+        }
     }
 }
