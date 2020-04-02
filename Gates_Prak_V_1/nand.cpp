@@ -14,7 +14,7 @@ clNAND::~clNAND()
 
 QRectF clNAND::boundingRect() const
 {
-    return QRectF(0,0,50,100);
+    return QRectF(0,0,20,20);
 }
 
 void clNAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
