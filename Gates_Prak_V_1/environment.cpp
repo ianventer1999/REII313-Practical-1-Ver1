@@ -1,5 +1,7 @@
 #include "environment.h"
+#include <QDrag>
 int GatePlace;
+bool bmove = false;
 Environment::Environment()
 {
 
@@ -40,6 +42,8 @@ Environment::Environment()
     this->update_timer = new QTimer(this);
     connect(this->update_timer, SIGNAL(timeout()),this,SLOT(update_scene()));
     this->update_timer->start(1000);
+
+
 }
 
 Environment::~Environment()
@@ -94,6 +98,8 @@ void Environment ::keyReleaseEvent(QKeyEvent *event)
 
 void Environment ::update_scene()
 {
+
+
    /* if (this->iInputs < 6)
     {
         this->iInputs++;
@@ -101,23 +107,21 @@ void Environment ::update_scene()
     else
     {
         this->iInputs = 0;
-    }
+    }*/
 
     for (auto b :this->Gates)
     {
-        b->iInputCount = this->iInputs;
-        this->removeItem(b);
-        this->addItem(b);
-    }*/
+        b->update(b->pos().x(),b->pos().y());
+    }
 }
 
 void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     // qDebug() << event->scenePos() ;
 
-    if(event->button() == Qt::LeftButton)
-    {
 
+    if((event->button() == Qt::LeftButton)&&(event->modifiers() ==Qt::ShiftModifier))
+    {
         switch(GatePlace)
         {
             case 1:
@@ -158,7 +162,46 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }break;
 
 
-        }
+        }     
+    }
+
+
+   if((event->button() == Qt::LeftButton)&&( bmove == false))
+    {
+        bmove = true;
+    }
+
+}
+void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    if((event->button() == Qt::LeftButton)&&( bmove == true))
+    {
+        bmove = false;
 
     }
 }
+
+
+void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    for (auto b:this->Gates)
+    {
+
+        if (bmove ==true)
+        {
+             qDebug() <<"working";
+            if ((event->scenePos().x() >= b->pos().x()-100)&&(event->scenePos().x())<=b->pos().x()+100)
+            {
+                if ((event->scenePos().y() >= b->pos().y()-100)&&(event->scenePos().x())<=b->pos().y()+100)
+                {
+                   // b->setPos();
+                    b->update(event->scenePos().x(),event->scenePos().y());
+                }
+            }
+        }
+
+    }
+
+}
+
+

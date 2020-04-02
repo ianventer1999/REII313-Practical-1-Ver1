@@ -28,6 +28,8 @@ class Environment : public QGraphicsScene
 
         void keyReleaseEvent(QKeyEvent *event);
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
+        void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     public slots:
         void update_scene();
     private:
