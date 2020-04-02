@@ -7,36 +7,30 @@ Environment::Environment()
 
     //Add Gates with instructions on how to use
 
-        GatesDefault.append(new clAND(-1000,-1000,2));
-        GatesDefault.append(new clNAND(-800,-1000,2));
-        GatesDefault.append(new clOR(-600,-1000,2));
-        GatesDefault.append(new clNOR(-400,-1000,2));
-        GatesDefault.append(new clXOR(-200,-1000,2));
-        GatesDefault.append(new clXNOR(0,-1000,2));
-        GatesDefault.append(new clNOT(200,-1000,2));
+        GatesDefault.append(new clAND(-5000,-1000,2));
+        GatesDefault.append(new clNAND(-4800,-1000,2));
+        GatesDefault.append(new clOR(-4600,-1000,2));
+        GatesDefault.append(new clNOR(-4400,-1000,2));
+        GatesDefault.append(new clXOR(-4200,-1000,2));
+        GatesDefault.append(new clXNOR(-4000,-1000,2));
+        GatesDefault.append(new clNOT(-3800,-1000,2));
 
         for (auto b :this->GatesDefault)
         {
             this->addItem(b);
         }
-        /*this->addItem(new clAND(-1000,-1000,2));
-        this->addItem(new clNAND(-800,-1000,2));
-        this->addItem(new clOR(-600,-1000,2));
-        this->addItem(new clNOR(-400,-1000,2));
-        this->addItem(new clXOR(-200,-1000,2));
-        this->addItem(new clXNOR(0,-1000,2));
-        this->addItem(new clNOT(200,-1000,2));*/
+
         QList <QGraphicsTextItem*> text ;//= addText("Hotkey =1");
-        text.append(addText("Hotkey 1"));
-        text.append(addText("Hotkey 2"));
-        text.append(addText("Hotkey 3"));
-        text.append(addText("Hotkey 4"));
-        text.append(addText("Hotkey 5"));
-        text.append(addText("Hotkey 6"));
-        text.append(addText("Hotkey 7"));
+        text.append(addText("Hotkey Shift 1 + Click"));
+        text.append(addText("Hotkey Shift 2 + Click"));
+        text.append(addText("Hotkey 3 + Click"));
+        text.append(addText("Hotkey 4 + Click"));
+        text.append(addText("Hotkey 5 + Click"));
+        text.append(addText("Hotkey 6 + Click"));
+        text.append(addText("Hotkey 7 + Click"));
         for(int i=0;i<text.size();++i)
         {
-            text[i]->setPos(-1000+200*i,-950);
+            text[i]->setPos(-5000+200*i,-950);
         }
 
     this->update_timer = new QTimer(this);
@@ -99,20 +93,14 @@ void Environment ::keyReleaseEvent(QKeyEvent *event)
 void Environment ::update_scene()
 {
 
-
-   /* if (this->iInputs < 6)
-    {
-        this->iInputs++;
-    }
-    else
-    {
-        this->iInputs = 0;
-    }*/
-
     for (auto b :this->Gates)
     {
+
         b->update(b->pos().x(),b->pos().y());
+        b->show();
     }
+
+
 }
 
 void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -127,38 +115,39 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
             case 1:
             {
                 Gates.append(new clAND(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                Environment::addItem(Gates.last());
+                //this->addItem();
             }break;
 
             case 2:
             {
                 Gates.append(new clNAND(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                 Environment::addItem(Gates.last());
             }break;
             case 3:
             {
                 Gates.append(new clOR(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                 Environment::addItem(Gates.last());
             }break;
             case 4:
             {
                 Gates.append(new clNOR(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                 Environment::addItem(Gates.last());
             }break;
             case 5:
             {
                 Gates.append(new clXOR(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                 Environment::addItem(Gates.last());
             }break;
             case 6:
             {
                 Gates.append(new clXNOR(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                Environment::addItem(Gates.last());
             }break;
             case 7:
             {
                 Gates.append(new clNOT(event->scenePos().x(),event->scenePos().y(),2));
-                this->addItem(Gates.last());
+                 Environment::addItem(Gates.last());
             }break;
 
 
@@ -189,13 +178,14 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
         if (bmove ==true)
         {
-             qDebug() <<"working";
-            if ((event->scenePos().x() >= b->pos().x()-100)&&(event->scenePos().x())<=b->pos().x()+100)
+
+            if ((event->scenePos().x() >= b->pos().x()-50)&&(event->scenePos().x())<=b->pos().x()+50)
             {
-                if ((event->scenePos().y() >= b->pos().y()-100)&&(event->scenePos().x())<=b->pos().y()+100)
+                if ((event->scenePos().y() >= b->pos().y()-50)&&(event->scenePos().y())<=b->pos().y()+50)
                 {
-                   // b->setPos();
                     b->update(event->scenePos().x(),event->scenePos().y());
+                    Environment::update();
+
                 }
             }
         }

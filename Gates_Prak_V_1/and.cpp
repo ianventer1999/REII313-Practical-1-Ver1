@@ -14,7 +14,7 @@ clAND::~clAND()
 
 QRectF clAND::boundingRect() const
 {
-    return QRectF(0,0,50,100);
+    return QRectF(0,0,20,20);
 }
 
 void clAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

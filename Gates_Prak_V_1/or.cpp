@@ -14,7 +14,7 @@ clOR::~clOR()
 
 QRectF clOR::boundingRect() const
 {
-    return QRectF(0,0,50,100);
+    return QRectF(0,0,20,20);
 }
 
 void clOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

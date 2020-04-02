@@ -14,7 +14,7 @@ clNOR::~clNOR()
 
 QRectF clNOR::boundingRect() const
 {
-    return QRectF(0,0,50,60);
+    return QRectF(0,0,20,20);
 }
 
 void clNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

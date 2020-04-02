@@ -14,7 +14,7 @@ clXOR::~clXOR()
 
 QRectF clXOR::boundingRect() const
 {
-    return QRectF(0,0,50,60);
+    return QRectF(0,0,20,20);
 }
 
 void clXOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
