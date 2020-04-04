@@ -64,6 +64,15 @@ void clNAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 bool clNAND::fDetermineOuptut()
 {
-    return true;
+    for(auto b:clGate::bInputs)
+    {
+        if (b == false)
+        {
+//            clGate::bInputs.clear();
+            return true ;
+        }
+    }
+   // clGate::bInputs.clear();
+    return false;
 }
 

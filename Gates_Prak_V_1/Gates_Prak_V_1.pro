@@ -35,7 +35,8 @@ SOURCES += \
     nor.cpp \
     xor.cpp \
     xnor.cpp \
-    on.cpp
+    on.cpp \
+    off.cpp
 
 HEADERS += \
     environment.h \
@@ -47,7 +48,8 @@ HEADERS += \
     nor.h \
     xor.h \
     xnor.h \
-    on.h
+    on.h \
+    off.h
 
 FORMS += \
         mainwindow.ui

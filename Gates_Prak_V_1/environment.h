@@ -18,6 +18,7 @@
 #include "xor.h"
 #include "xnor.h"
 #include "on.h"
+#include "off.h"
 #include "gate.h"
 
 class Environment : public QGraphicsScene
@@ -38,7 +39,9 @@ class Environment : public QGraphicsScene
         QList<clGate*> Gates;
         QList<clGate*> GatesDefault;
         QList<On*> DefaultOn;
+        QList<clOFF*> DefaultOff;
         QList<On*> OnList;
+        QList<clOFF*> OffList;
         QTimer  *update_timer;
         int     iInputs;
 };

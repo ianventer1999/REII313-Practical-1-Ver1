@@ -14,12 +14,13 @@ Environment::Environment()
         GatesDefault.append(new clXNOR(-4000,-1000,2));
         GatesDefault.append(new clNOT(-3800,-1000,2));
         DefaultOn.append(new On(-3600,-1000));
-
+        DefaultOff.append(new clOFF(-3400,-1000));
         for (auto b :this->GatesDefault)
         {
             this->addItem(b);
         }
         this->addItem(DefaultOn.first());
+        this->addItem(DefaultOff.first());
         QList <QGraphicsTextItem*> text ;//= addText("Hotkey =1");
         text.append(addText("Hotkey Shift 1 + Click"));
         text.append(addText("Hotkey Shift 2 + Click"));
@@ -79,6 +80,10 @@ void Environment ::keyPressEvent(QKeyEvent *event)
         {
             iGatePlace = 8;
         }break;
+        case Qt::Key_9:
+        {
+            iGatePlace = 9;
+        }break;
     }
 }
 
@@ -89,18 +94,11 @@ void Environment ::keyReleaseEvent(QKeyEvent *event)
 
 void Environment ::update_scene()
 {
-   // qDebug()<<"Test";
     for (auto b :this->Gates)
     {
 
         b->update(b->pos().x(),b->pos().y());
         b->show();
-        //if (b->iActiveInputs==2)
-        //{
-          //qDebug()<< b->fDetermineOuptut();
-        //}
-
-
 
     }
 }
@@ -154,9 +152,13 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
                OnList.append(new On(event->scenePos().x(),event->scenePos().y()));
                Environment::addItem(OnList.last());
             }break;
+            case 9:
+            {
+               OffList.append(new clOFF(event->scenePos().x(),event->scenePos().y()));
+               Environment::addItem(OffList.last());
+            }break;
         }     
     }
-
 
     if((event->button() == Qt::LeftButton)&&(bGateMove == false)&&(iGatePlace<8))
     {
@@ -181,39 +183,54 @@ void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             bConditionMove =false;
         }
     }
+    //Determine the output of the gate after each mouse release event
     for (auto b :this->Gates)
     {
-
         if (b->iActiveInputs==b->iInputCount)
         {
-          qDebug()<< b->fDetermineOuptut();
+          if (b->fDetermineOuptut())
+          {
+
+              OnList.append(new On(b->scenePos().x()+85,b->scenePos().y()+20));
+              this->addItem(OnList.last());
+          }else
+          {
+              OffList.append(new clOFF(b->scenePos().x()+85,b->scenePos().y()+20));
+              this->addItem(OffList.last());
+          }
         }
 
     }
 
 
 }
-
+//Update Inputs are used to determine if a inputclass is moving and if it is in the region of a gates input add it to the gate
+//Also set the gates input boolean value to the appropiate true/false
 void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 {
     for (auto b:this->OnList)
     {
         if (bConditionMove ==true)
         {
-            QPointF p1;
-            if(b->DistanceFromObject(event->scenePos())<20)
+
+            if(b->DistanceFromObject(event->scenePos())<25)
             {
                 b->update(event->scenePos().x(),event->scenePos().y());
                 Environment::update();
             }
+            //If the On class is near the input point 1 of the gates input, add the Onclass position to the Point 1 position
+            //Same concept applies to point 2 for the second input of the Gate
+            //This also applies for the Off class
             for (auto g:this->Gates)
             {
+                QPointF p1;
                 p1 = g->scenePos();
                 p1.rx()-=10;
                 p1.ry()+=5;
-                if(b->DistanceFromObject(p1)<10)
+                if(b->DistanceFromObject(p1)<20)
                 {
                     b->update(p1.x(),p1.y());
+                    //Secondary flag to check if the input is already occupied
                     if(g->bActiveInputs[0]==false)
                     {
                         g->bActiveInputs[0] = true;
@@ -225,15 +242,56 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 p2 = g->scenePos();
                 p2.rx()-=10;
                 p2.ry()+=35;
-                if(b->DistanceFromObject(p2)<10)
+                if(b->DistanceFromObject(p2)<20)
                 {
                     b->update(p2.x(),p2.y());
-                    g->bInputs.append(true);
                     if(g->bActiveInputs[1]==false)
                     {
                         g->bActiveInputs[1] = true;
                         g->iActiveInputs++;
                         g->bInputs.append(true);
+                    }
+                }
+            }
+        }
+    }
+    for (auto b:this->OffList)
+    {
+        if (bConditionMove ==true)
+        {
+            QPointF p1;
+            if(b->DistanceFromObject(event->scenePos())<25)
+            {
+                b->update(event->scenePos().x(),event->scenePos().y());
+                Environment::update();
+            }
+            for (auto g:this->Gates)
+            {
+                p1 = g->scenePos();
+                p1.rx()-=10;
+                p1.ry()+=5;
+                if(b->DistanceFromObject(p1)<20)
+                {
+                    b->update(p1.x(),p1.y());
+                    if(g->bActiveInputs[0]==false)
+                    {
+                        g->bActiveInputs[0] = true;
+                        g->iActiveInputs++;
+                        g->bInputs.append(false);
+                    }
+                }
+                QPointF p2;
+                p2 = g->scenePos();
+                p2.rx()-=10;
+                p2.ry()+=35;
+                if(b->DistanceFromObject(p2)<20)
+                {
+                    b->update(p2.x(),p2.y());
+                    if(g->bActiveInputs[1]==false)
+                    {
+                        g->bActiveInputs[1] = true;
+                        g->iActiveInputs++;
+                        g->bInputs.append(false);
                     }
                 }
             }
@@ -256,10 +314,10 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             }
         }
 
-        UpdateInputs(event);
+
     }
 
-
+    this->UpdateInputs(event);
 
 }
 

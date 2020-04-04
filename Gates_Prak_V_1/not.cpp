@@ -62,5 +62,16 @@ void clNOT::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 bool clNOT::fDetermineOuptut()
 {
-    return true;
+    for(auto b:clGate::bInputs)
+    {
+        if (b==true)
+        {
+            clGate::bInputs.clear();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

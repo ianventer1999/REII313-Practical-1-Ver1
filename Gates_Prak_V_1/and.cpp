@@ -62,6 +62,7 @@ void clAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 bool clAND::fDetermineOuptut()
 {
+
     for(auto b:clGate::bInputs)
     {
         if (b == false)
@@ -69,5 +70,6 @@ bool clAND::fDetermineOuptut()
             return false ;
         }
     }
+    //clGate::bInputs.clear();
     return true;
 }
