@@ -62,3 +62,8 @@ void clNAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     }
 }
 
+bool clNAND::fDetermineOuptut()
+{
+    return true;
+}
+

@@ -17,7 +17,7 @@
 #include "nor.h"
 #include "xor.h"
 #include "xnor.h"
-
+#include "on.h"
 #include "gate.h"
 
 class Environment : public QGraphicsScene
@@ -31,11 +31,14 @@ class Environment : public QGraphicsScene
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+        void UpdateInputs(QGraphicsSceneMouseEvent *event);
     public slots:
         void update_scene();
     private:
         QList<clGate*> Gates;
         QList<clGate*> GatesDefault;
+        QList<On*> DefaultOn;
+        QList<On*> OnList;
         QTimer  *update_timer;
         int     iInputs;
 };

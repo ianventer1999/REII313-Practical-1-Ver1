@@ -59,3 +59,8 @@ void clNOT::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         }break;
     }
 }
+
+bool clNOT::fDetermineOuptut()
+{
+    return true;
+}

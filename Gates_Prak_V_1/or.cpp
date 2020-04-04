@@ -59,3 +59,8 @@ void clOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     }
 }
 
+bool clOR::fDetermineOuptut()
+{
+    return true;
+}
+

@@ -62,3 +62,8 @@ void clXNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     }
 }
 
+bool clXNOR::fDetermineOuptut()
+{
+    return true;
+}
+

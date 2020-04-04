@@ -59,3 +59,15 @@ void clAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         }break;
     }
 }
+
+bool clAND::fDetermineOuptut()
+{
+    for(auto b:clGate::bInputs)
+    {
+        if (b == false)
+        {
+            return false ;
+        }
+    }
+    return true;
+}
