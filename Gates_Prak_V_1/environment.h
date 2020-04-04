@@ -8,6 +8,8 @@
 #include <QTimer>
 #include <QPainter>
 #include <QList>
+#include <QGraphicsSceneMouseEvent>
+
 #include "and.h"
 #include "or.h"
 #include "not.h"
@@ -15,7 +17,7 @@
 #include "nor.h"
 #include "xor.h"
 #include "xnor.h"
-#include <QGraphicsSceneMouseEvent>
+
 #include "gate.h"
 
 class Environment : public QGraphicsScene
@@ -25,7 +27,6 @@ class Environment : public QGraphicsScene
         Environment();
         ~Environment();
         void keyPressEvent(QKeyEvent *event);
-
         void keyReleaseEvent(QKeyEvent *event);
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
@@ -34,8 +35,7 @@ class Environment : public QGraphicsScene
         void update_scene();
     private:
         QList<clGate*> Gates;
-         QList<clGate*> GatesDefault;
-        //clGate  *Gates[10];
+        QList<clGate*> GatesDefault;
         QTimer  *update_timer;
         int     iInputs;
 };

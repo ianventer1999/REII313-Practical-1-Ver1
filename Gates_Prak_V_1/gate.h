@@ -10,7 +10,7 @@ class clGate: public QGraphicsItem
     public:
         clGate();
         virtual ~clGate();
-
+        double DistanceFromObject(QPointF OtherObject);
         int     iInputCount;
         bool    bInputs[10];
         void update(float x,float y);

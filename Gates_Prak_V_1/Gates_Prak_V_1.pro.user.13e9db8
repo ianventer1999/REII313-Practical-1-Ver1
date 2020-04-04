@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.8.1, 2020-04-02T14:53:06. -->
+<!-- Written by QtCreator 4.8.1, 2020-04-02T12:26:14. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -297,7 +297,7 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Gates_Prak_V_1</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Gates_Prak_V_12</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Universiteit/3de_Jaar/REII 313 - OBJECT ORIENTED PROGRAMMING/REII313_Practical1_ver1/REII313-Practical1/Gates_Prak_V_1/Gates_Prak_V_1.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Universiteit/3de_Jaar/REII 313 - OBJECT ORIENTED PROGRAMMING/REII313-Practical1/Gates_Prak_V_1/Gates_Prak_V_1.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">Gates_Prak_V_1.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>

@@ -163,7 +163,13 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
         if (bMove ==true)
         {
+            if(b->DistanceFromObject(event->scenePos())<50)
+            {
+                b->update(event->scenePos().x(),event->scenePos().y());
+                Environment::update();
+            }
 
+            /*
             if ((event->scenePos().x() >= b->pos().x()-50)&&(event->scenePos().x())<=b->pos().x()+50)
             {
                 if ((event->scenePos().y() >= b->pos().y()-50)&&(event->scenePos().y())<=b->pos().y()+50)
@@ -172,7 +178,7 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
                     Environment::update();
 
                 }
-            }
+            }*/
         }
 
     }
