@@ -12,6 +12,9 @@ class clNOR: public clGate
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     private:
+
+protected:
+        bool    fDetermineOuptut();
 };
 
 #endif // NOR_H

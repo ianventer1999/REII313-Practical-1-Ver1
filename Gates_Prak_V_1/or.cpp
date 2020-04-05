@@ -57,5 +57,23 @@ void clOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
             painter->drawLine(QLine(0,45,29,45));
         }break;
     }
+
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+}
+
+bool clOR::fDetermineOuptut()
+{
+    bool bReturn = false;
+
+    for(auto b:clGate::bInputs)
+    {
+        if (b == true)
+        {
+            bReturn = true;
+        }
+    }
+
+    return bReturn;
 }
 

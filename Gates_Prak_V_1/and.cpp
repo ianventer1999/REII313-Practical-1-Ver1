@@ -58,4 +58,21 @@ void clAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             painter->drawLine(QLine(0,45,20,45));
         }break;
     }
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+}
+
+bool clAND::fDetermineOuptut()
+{
+    bool bReturn = true;
+
+    for(auto b:clGate::bInputs)
+    {
+        if (b == false)
+        {
+            bReturn = false ;
+        }
+    }
+
+    return bReturn;
 }

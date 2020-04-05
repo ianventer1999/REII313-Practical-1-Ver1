@@ -58,4 +58,11 @@ void clNOT::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             painter->drawLine(QLine(0,45,20,45));
         }break;
     }
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+}
+
+bool clNOT::fDetermineOuptut()
+{
+    return !clGate::bInputs.first();
 }

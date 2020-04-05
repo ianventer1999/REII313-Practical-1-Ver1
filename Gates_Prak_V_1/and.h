@@ -13,7 +13,11 @@ class clAND: public clGate
         virtual ~clAND();
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+
     private:
+
+    protected:
+        bool    fDetermineOuptut();
 };
 
 #endif // AND_H

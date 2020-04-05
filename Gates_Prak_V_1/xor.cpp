@@ -59,6 +59,30 @@ void clXOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             painter->drawLine(QLine(0,45,24,45));
         }break;
     }
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+}
+
+bool clXOR::fDetermineOuptut()
+{
+   int  iTrueCounter = 0;
+
+   for(auto b:clGate::bInputs)
+   {
+       if (b == true)
+       {
+            iTrueCounter++;
+       }
+   }
+
+   if (iTrueCounter == 1) //Mag slegs 1 true he
+   {
+       return true;
+   }
+   else
+   {
+        return false;
+   }
 }
 
 
