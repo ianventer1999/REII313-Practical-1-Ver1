@@ -58,20 +58,13 @@ void clNOT::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             painter->drawLine(QLine(0,45,20,45));
         }break;
     }
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
 }
 
 bool clNOT::fDetermineOuptut()
 {
-    for(auto b:clGate::bInputs)
-    {
-        if (b==true)
-        {
-            clGate::bInputs.clear();
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
+    return !clGate::bInputs.first();
 }
+
+

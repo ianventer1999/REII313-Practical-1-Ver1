@@ -60,19 +60,24 @@ void clNAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
             painter->drawLine(QLine(0,45,20,45));
         }break;
     }
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
 }
 
 bool clNAND::fDetermineOuptut()
 {
+    bool bReturn = true;
+
     for(auto b:clGate::bInputs)
     {
         if (b == false)
         {
-//            clGate::bInputs.clear();
-            return true ;
+            bReturn = false ;
         }
     }
-   // clGate::bInputs.clear();
-    return false;
+
+    return !bReturn; //Return opposite of AND
 }
+
+
 

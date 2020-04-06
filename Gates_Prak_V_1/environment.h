@@ -10,6 +10,10 @@
 #include <QList>
 #include <QGraphicsSceneMouseEvent>
 
+#include <QDrag>
+#include <math.h>
+
+
 #include "and.h"
 #include "or.h"
 #include "not.h"

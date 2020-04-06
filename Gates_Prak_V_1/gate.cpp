@@ -12,6 +12,7 @@ clGate::~clGate()
 }
 
 double clGate::DistanceFromObject(QPointF OtherObject)
+
 {
     return sqrt(pow((OtherObject.x()-this->scenePos().x()),2) + pow((OtherObject.y()-this->scenePos().y()),2));
 }
@@ -19,18 +20,11 @@ double clGate::DistanceFromObject(QPointF OtherObject)
 
 void clGate::update(float x,float y)
 {
-
-    this->setX(x);
-    this->setY(y);
+    this->setX(static_cast<double>(x));
+    this->setY(static_cast<double>(y));
 }
 
 void clGate::pUpdateInputCount(int)
 {
 
 }
-
-bool clGate::fDetermineOuptut()
-{
-
-}
-

@@ -58,18 +58,22 @@ void clNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             painter->drawLine(QLine(0,45,29,45));
         }break;
     }
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
 }
 
 bool clNOR::fDetermineOuptut()
 {
-    for(auto b:clNOR::bInputs)
+    bool bReturn = false;
+
+    for(auto b:clGate::bInputs)
     {
         if (b == true)
         {
-            //clGate::bInputs.clear();
-            return false ;
+            bReturn = true;
         }
     }
-    //clGate::bInputs.clear();
-    return true;
+
+    return! bReturn;
 }
+
