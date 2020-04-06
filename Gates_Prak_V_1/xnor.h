@@ -11,6 +11,9 @@ class clXNOR: public clGate
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     private:
+
+protected:
+        bool    fDetermineOuptut();
 };
 
 #endif // XNOR_H

@@ -59,3 +59,18 @@ void clOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     }
 }
 
+bool clOR::fDetermineOuptut()
+{
+
+    for(auto b:clGate::bInputs)
+    {
+        if (b == true)
+        {
+           // clGate::bInputs.clear();
+            return true ;
+        }
+    }
+    //::bInputs.clear();
+    return false;
+}
+

@@ -59,3 +59,17 @@ void clNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         }break;
     }
 }
+
+bool clNOR::fDetermineOuptut()
+{
+    for(auto b:clNOR::bInputs)
+    {
+        if (b == true)
+        {
+            //clGate::bInputs.clear();
+            return false ;
+        }
+    }
+    //clGate::bInputs.clear();
+    return true;
+}

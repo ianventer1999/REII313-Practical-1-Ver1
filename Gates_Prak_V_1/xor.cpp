@@ -61,4 +61,34 @@ void clXOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     }
 }
 
+bool clXOR::fDetermineOuptut()
+{
+   auto a= this->clGate::bInputs;
+    //Vir een of ander rede het die bInputs wat n Qlist is 10 Items wat nie waar is nie ??? gebruik maar net static sizes wat 2 iterasies tell
+   for(int i= 0;i<a.size();++i)
+    {
+        for(int j= 0;j<a.size();++j)
+        {
+          if ((a[i]==a[j])&&(i!=j))
+          {
+             // clGate::bInputs.clear();
+              return false;
+          }
+        }
+    }
+    /*for(int i= 0;i<2;++i)
+        {
+            for(int j= 0;j<2;++j)
+            {
+              if ((a[i]==a[j])&&(i!=j))
+              {
+                  return false;
+              }
+            }
+        }*/
+   // clGate::bInputs.clear();
+    return true;
+
+}
+
 
