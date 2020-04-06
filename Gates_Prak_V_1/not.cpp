@@ -5,6 +5,7 @@ clNOT::clNOT(int iXval,int iYval,int iInputCount)
     this->setX(iXval);
     this->setY(iYval);
     this->iInputCount = iInputCount;
+    this->iMaxInput = 1;
 }
 
 clNOT::~clNOT()

@@ -1,5 +1,6 @@
 #include "off.h"
 #include <math.h>
+
 clOFF::clOFF(int X, int Y)
 {
     this->setX(X);
@@ -19,14 +20,12 @@ void clOFF::update(float x, float y)
 
 QRectF clOFF::boundingRect() const
 {
-    return QRectF(0,0,10,10);
+    return QRectF(0,0,6,6);
 }
 
 void clOFF::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    //painter->setBrush(Qt::black);
-    //painter->drawEllipse(0,0, 10, 10);
-    painter->drawRect(0,0,10,10);
+    painter->drawRect(0,0,6,6);
     Q_UNUSED(option);
     Q_UNUSED(widget);
 }

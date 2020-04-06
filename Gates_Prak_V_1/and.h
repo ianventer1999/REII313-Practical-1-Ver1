@@ -12,12 +12,12 @@ class clAND: public clGate
         clAND(int iXval,int iYval,int iInputCount);
         virtual ~clAND();
         QRectF boundingRect() const;
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 
     private:
 
     protected:
         bool    fDetermineOuptut();
+        void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 
 #endif // AND_H
