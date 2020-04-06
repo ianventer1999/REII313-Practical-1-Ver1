@@ -1,9 +1,9 @@
 #include "environment.h"
-#include <QDrag>
 
-int     iGatePlace;
-bool    bGateMove = false;
-bool    bConditionMove =false;
+static  int     iGatePlace;
+static  bool    bGateMove = false;
+static  bool    bConditionMove =false;
+
 Environment::Environment()
 {
         GatesDefault.append(new clAND(-5000,-1000,2));                                  //Add Gates with instructions on how to use
@@ -97,7 +97,7 @@ void Environment ::update_scene()
     for (auto b :this->Gates)
     {
 
-        b->update(b->pos().x(),b->pos().y());
+        b->update(static_cast<float>(b->pos().x()),static_cast<float>(b->pos().y()));
         b->show();
 
     }
@@ -113,48 +113,51 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             case 1:
             {
-                Gates.append(new clAND(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clAND(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
-
             case 2:
             {
-                Gates.append(new clNAND(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clNAND(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
             case 3:
             {
-                Gates.append(new clOR(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clOR(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
             case 4:
             {
-                Gates.append(new clNOR(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clNOR(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
             case 5:
             {
-                Gates.append(new clXOR(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clXOR(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
             case 6:
             {
-                Gates.append(new clXNOR(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clXNOR(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
             case 7:
             {
-                Gates.append(new clNOT(event->scenePos().x(),event->scenePos().y(),2));
+                Gates.append(new clNOT(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y()),2));
                 Environment::addItem(Gates.last());
             }break;
             case 8:
             {
-               OnList.append(new On(event->scenePos().x(),event->scenePos().y()));
+
+               OnList.append(new On(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y())));
+
                Environment::addItem(OnList.last());
             }break;
             case 9:
             {
-               OffList.append(new clOFF(event->scenePos().x(),event->scenePos().y()));
+
+               OffList.append(new clOFF(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y())));
+
                Environment::addItem(OffList.last());
             }break;
         }     
@@ -174,6 +177,7 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->button() == Qt::LeftButton)&&(bGateMove == true))
+
     {
         bGateMove = false;
     }else
@@ -181,6 +185,7 @@ void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         if(bConditionMove)
         {
             bConditionMove =false;
+
         }
     }
     //Determine the output of the gate after each mouse release event
@@ -190,12 +195,11 @@ void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         {
           if (b->fDetermineOuptut())
           {
-
-              OnList.append(new On(b->scenePos().x()+85,b->scenePos().y()+20));
+              OnList.append(new On(static_cast<int>(b->scenePos().x()+85),static_cast<int>(b->scenePos().y()+20)));
               this->addItem(OnList.last());
           }else
           {
-              OffList.append(new clOFF(b->scenePos().x()+85,b->scenePos().y()+20));
+              OffList.append(new clOFF(static_cast<int>(b->scenePos().x()+85),static_cast<int>(b->scenePos().y()+20)));
               this->addItem(OffList.last());
           }
         }
@@ -210,12 +214,13 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 {
     for (auto b:this->OnList)
     {
+
         if (bConditionMove ==true)
         {
 
             if(b->DistanceFromObject(event->scenePos())<25)
             {
-                b->update(event->scenePos().x(),event->scenePos().y());
+                b->update(static_cast<float>(event->scenePos().x()),static_cast<float>(event->scenePos().y()));
                 Environment::update();
             }
             //If the On class is near the input point 1 of the gates input, add the Onclass position to the Point 1 position
@@ -229,7 +234,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 p1.ry()+=5;
                 if(b->DistanceFromObject(p1)<20)
                 {
-                    b->update(p1.x(),p1.y());
+                    b->update(static_cast<float>(p1.x()),static_cast<float>(p1.y()));
                     //Secondary flag to check if the input is already occupied
                     if(g->bActiveInputs[0]==false)
                     {
@@ -244,7 +249,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 p2.ry()+=35;
                 if(b->DistanceFromObject(p2)<20)
                 {
-                    b->update(p2.x(),p2.y());
+                    b->update(static_cast<float>(p2.x()),static_cast<float>(p2.y()));
                     if(g->bActiveInputs[1]==false)
                     {
                         g->bActiveInputs[1] = true;
@@ -262,7 +267,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
             QPointF p1;
             if(b->DistanceFromObject(event->scenePos())<25)
             {
-                b->update(event->scenePos().x(),event->scenePos().y());
+                b->update(static_cast<float>(event->scenePos().x()),static_cast<float>(event->scenePos().y()));
                 Environment::update();
             }
             for (auto g:this->Gates)
@@ -272,7 +277,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 p1.ry()+=5;
                 if(b->DistanceFromObject(p1)<20)
                 {
-                    b->update(p1.x(),p1.y());
+                    b->update(static_cast<float>(p1.x()),static_cast<float>(p1.y()));
                     if(g->bActiveInputs[0]==false)
                     {
                         g->bActiveInputs[0] = true;
@@ -286,7 +291,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 p2.ry()+=35;
                 if(b->DistanceFromObject(p2)<20)
                 {
-                    b->update(p2.x(),p2.y());
+                    b->update(static_cast<float>(p2.x()),static_cast<float>(p2.y()));
                     if(g->bActiveInputs[1]==false)
                     {
                         g->bActiveInputs[1] = true;
@@ -296,27 +301,25 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 }
             }
         }
+
     }
 }
+
 
 
 void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     for (auto b:this->Gates)
     {
-
         if (bGateMove ==true)
         {
             if(b->DistanceFromObject(event->scenePos())<50)
             {
-                b->update(event->scenePos().x(),event->scenePos().y());
+                b->update(static_cast<float>(event->scenePos().x()),static_cast<float>(event->scenePos().y()));
                 Environment::update();
             }
         }
-
-
     }
-
     this->UpdateInputs(event);
 
 }

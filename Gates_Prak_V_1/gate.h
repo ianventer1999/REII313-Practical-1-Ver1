@@ -1,11 +1,11 @@
 #ifndef GATE_H
 #define GATE_H
 
-
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPainter>
 #include <QList>
+
 class clGate: public QGraphicsItem
 {
     public:
