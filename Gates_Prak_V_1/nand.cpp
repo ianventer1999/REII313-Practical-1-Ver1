@@ -79,3 +79,17 @@ bool clNAND::fDetermineOuptut()
     return !bReturn; //Return opposite of AND
 }
 
+bool clNAND::fDetermineOuptut()
+{
+    for(auto b:clGate::bInputs)
+    {
+        if (b == false)
+        {
+//            clGate::bInputs.clear();
+            return true ;
+        }
+    }
+   // clGate::bInputs.clear();
+    return false;
+}
+

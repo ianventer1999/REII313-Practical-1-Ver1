@@ -76,3 +76,17 @@ bool clAND::fDetermineOuptut()
 
     return bReturn;
 }
+
+bool clAND::fDetermineOuptut()
+{
+
+    for(auto b:clGate::bInputs)
+    {
+        if (b == false)
+        {
+            return false ;
+        }
+    }
+    //clGate::bInputs.clear();
+    return true;
+}

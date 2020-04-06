@@ -13,8 +13,10 @@ double clOFF::DistanceFromObject(QPointF OtherObject)
 
 void clOFF::update(float x, float y)
 {
+
     this->setX(static_cast<double>(x));
     this->setY(static_cast<double>(y));
+
 }
 
 QRectF clOFF::boundingRect() const
@@ -27,6 +29,8 @@ void clOFF::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     //painter->setBrush(Qt::black);
     //painter->drawEllipse(0,0, 10, 10);
     painter->drawRect(0,0,10,10);
+
     Q_UNUSED(option);
     Q_UNUSED(widget);
+
 }

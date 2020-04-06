@@ -148,12 +148,16 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }break;
             case 8:
             {
+
                OnList.append(new On(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y())));
+
                Environment::addItem(OnList.last());
             }break;
             case 9:
             {
+
                OffList.append(new clOFF(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y())));
+
                Environment::addItem(OffList.last());
             }break;
         }     
@@ -173,6 +177,7 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->button() == Qt::LeftButton)&&(bGateMove == true))
+
     {
         bGateMove = false;
     }else
@@ -180,6 +185,7 @@ void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         if(bConditionMove)
         {
             bConditionMove =false;
+
         }
     }
     //Determine the output of the gate after each mouse release event
@@ -208,6 +214,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 {
     for (auto b:this->OnList)
     {
+
         if (bConditionMove ==true)
         {
 
@@ -294,8 +301,10 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 }
             }
         }
+
     }
 }
+
 
 
 void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -312,6 +321,7 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         }
     }
     this->UpdateInputs(event);
+
 }
 
 

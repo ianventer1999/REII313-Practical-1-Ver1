@@ -76,3 +76,17 @@ bool clNOR::fDetermineOuptut()
 
     return! bReturn;
 }
+
+bool clNOR::fDetermineOuptut()
+{
+    for(auto b:clNOR::bInputs)
+    {
+        if (b == true)
+        {
+            //clGate::bInputs.clear();
+            return false ;
+        }
+    }
+    //clGate::bInputs.clear();
+    return true;
+}

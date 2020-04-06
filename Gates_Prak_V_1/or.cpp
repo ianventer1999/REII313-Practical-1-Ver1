@@ -77,3 +77,18 @@ bool clOR::fDetermineOuptut()
     return bReturn;
 }
 
+bool clOR::fDetermineOuptut()
+{
+
+    for(auto b:clGate::bInputs)
+    {
+        if (b == true)
+        {
+           // clGate::bInputs.clear();
+            return true ;
+        }
+    }
+    //::bInputs.clear();
+    return false;
+}
+

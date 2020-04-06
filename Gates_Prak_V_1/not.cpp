@@ -66,3 +66,19 @@ bool clNOT::fDetermineOuptut()
 {
     return !clGate::bInputs.first();
 }
+
+bool clNOT::fDetermineOuptut()
+{
+    for(auto b:clGate::bInputs)
+    {
+        if (b==true)
+        {
+            clGate::bInputs.clear();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}

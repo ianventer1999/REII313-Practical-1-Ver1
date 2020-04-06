@@ -5,6 +5,7 @@ On::On(int X, int Y)
 {
     this->setX(X);
     this->setY(Y);
+
 }
 
 double On::DistanceFromObject(QPointF OtherObject)
@@ -14,8 +15,10 @@ double On::DistanceFromObject(QPointF OtherObject)
 
 void On::update(float x, float y)
 {
+
     this->setX(static_cast<double>(x));
     this->setY(static_cast<double>(y));
+
 }
 
 QRectF On::boundingRect() const
@@ -26,7 +29,9 @@ QRectF On::boundingRect() const
 void On::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setBrush(Qt::black);
+
     painter->drawRect(0,0,10,10);
     Q_UNUSED(option);
     Q_UNUSED(widget);
+
 }

@@ -87,3 +87,20 @@ bool clXNOR::fDetermineOuptut()
     }
 }
 
+bool clXNOR::fDetermineOuptut()
+{
+    auto a= this->clGate::bInputs;
+    //Vir een of ander rede het die bInputs wat n Qlist is 10 Items wat nie waar is nie ??? gebruik maar net static sizes wat 2 iterasies tell
+   for(int i= 0;i<a.size();++i)
+    {
+        for(int j= 0;j<a.size();++j)
+        {
+          if ((a[i]==a[j])&&(i!=j))
+          {
+              return true;
+          }
+        }
+    }
+   return  false;
+}
+
