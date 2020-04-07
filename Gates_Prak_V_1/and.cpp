@@ -76,3 +76,8 @@ bool clAND::fDetermineOuptut()
 
     return bReturn;
 }
+
+QString clAND::GetClassName()
+{
+    return "AND";
+}

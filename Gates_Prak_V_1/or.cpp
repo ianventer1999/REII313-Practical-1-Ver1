@@ -62,6 +62,11 @@ void clOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     Q_UNUSED(widget);
 }
 
+QString clOR::GetClassName()
+{
+    return "OR";
+}
+
 bool clOR::fDetermineOuptut()
 {
     bool bReturn = false;

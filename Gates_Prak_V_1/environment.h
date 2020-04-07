@@ -12,8 +12,7 @@
 
 #include <QDrag>
 #include <math.h>
-
-
+#include <QString>
 #include "and.h"
 #include "or.h"
 #include "not.h"
@@ -33,6 +32,7 @@ class Environment : public QGraphicsScene
         ~Environment();
         void keyPressEvent(QKeyEvent *event);
         void keyReleaseEvent(QKeyEvent *event);
+        void GateInformation(QGraphicsSceneMouseEvent *event);
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

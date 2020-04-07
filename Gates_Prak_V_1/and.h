@@ -17,6 +17,7 @@ class clAND: public clGate
 
     protected:
         bool    fDetermineOuptut();
+        QString GetClassName();
         void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 

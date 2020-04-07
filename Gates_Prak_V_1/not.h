@@ -14,6 +14,7 @@ class clNOT: public clGate
     protected:
         bool    fDetermineOuptut();
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+        QString GetClassName();
 };
 
 #endif // NOT_H

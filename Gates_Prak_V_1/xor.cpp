@@ -63,6 +63,11 @@ void clXOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(widget);
 }
 
+QString clXOR::GetClassName()
+{
+    return "XOR";
+}
+
 bool clXOR::fDetermineOuptut()
 {
    int  iTrueCounter = 0;

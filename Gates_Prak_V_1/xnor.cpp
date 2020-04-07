@@ -65,6 +65,11 @@ void clXNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(widget);
 }
 
+QString clXNOR::GetClassName()
+{
+    return "XNOR";
+}
+
 bool clXNOR::fDetermineOuptut()
 {
     int  iTrueCounter = 0;
