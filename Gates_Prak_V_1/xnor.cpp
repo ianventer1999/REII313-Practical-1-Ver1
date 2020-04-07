@@ -87,3 +87,4 @@ bool clXNOR::fDetermineOuptut()
     }
 }
 
+

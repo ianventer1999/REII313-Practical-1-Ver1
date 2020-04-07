@@ -77,3 +77,4 @@ bool clOR::fDetermineOuptut()
     return bReturn;
 }
 
+

@@ -67,3 +67,5 @@ bool clNOT::fDetermineOuptut()
 {
     return !clGate::bInputs.first();
 }
+
+

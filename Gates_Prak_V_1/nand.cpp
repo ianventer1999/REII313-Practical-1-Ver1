@@ -79,3 +79,5 @@ bool clNAND::fDetermineOuptut()
     return !bReturn; //Return opposite of AND
 }
 
+
+

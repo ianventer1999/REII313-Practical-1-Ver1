@@ -76,3 +76,4 @@ bool clNOR::fDetermineOuptut()
 
     return! bReturn;
 }
+

@@ -173,12 +173,16 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }break;
             case 8:
             {
+
                OnList.append(new On(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y())));
+
                Environment::addItem(OnList.last());
             }break;
             case 9:
             {
+
                OffList.append(new clOFF(static_cast<int>(event->scenePos().x()),static_cast<int>(event->scenePos().y())));
+
                Environment::addItem(OffList.last());
             }break;
         }     
@@ -196,6 +200,7 @@ void Environment::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->button() == Qt::LeftButton)&&(bGateMove == true))
+
     {
         bGateMove = false;
     }
@@ -204,6 +209,7 @@ void Environment::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         if(bConditionMove)
         {
             bConditionMove =false;
+
         }
     }
     //Determine the output of the gate after each mouse release event
@@ -230,7 +236,9 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 {
     for (auto b:this->Gates)
     {
+
         if (bGateMove == true)
+
         {
             if(b->DistanceFromObject(event->scenePos())<25)
             {
@@ -369,12 +377,14 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 
                 for (int I = 0;I < 5;I++)
                 {
+
                     Points.append(g->scenePos());
                 }
 
                 switch (g->iInputCount)
                 {
                     case 1:
+
                     {
                         Points[0].rx()-=7;
                         Points[0].ry()+=22;
@@ -458,7 +468,9 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 
                 for (int J = 0; J < g->iInputCount;J++)
                 {
+
                     if(b->DistanceFromObject(Points[J])<5)
+
                     {
                         b->update(static_cast<float>(Points[J].x()),static_cast<float>(Points[J].y()));
                         //Check if all inputs are used then check if the input is already occupied
@@ -495,7 +507,9 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 
                 switch (g->iInputCount)
                 {
+
                     case 1:
+
                     {
                         Points[0].rx()-=7;
                         Points[0].ry()+=22;
@@ -579,7 +593,9 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 
                 for (int J = 0; J < g->iInputCount;J++)
                 {
+
                     if(b->DistanceFromObject(Points[J])<5)
+
                     {
                         b->update(static_cast<float>(Points[J].x()),static_cast<float>(Points[J].y()));
                         if(g->bActiveInputs[J]==false)
@@ -592,15 +608,19 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
                 }
             }
         }
+
     }
 }
+
 
 
 void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {    
     for (auto b:this->Gates)
     {
+
         if (bGateMove == true)
+
         {
             if(b->DistanceFromObject(event->scenePos())<50)
             {
@@ -611,10 +631,12 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         }
     }
 
+
    if (!bGateMove)
    {
         this->UpdateInputs(event);
    }
+
 
 }
 
