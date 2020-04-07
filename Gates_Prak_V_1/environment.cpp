@@ -3,7 +3,7 @@
 static  int     iGatePlace;
 static  bool    bGateMove = false;
 static  bool    bConditionMove =false;
-
+static int      iInputsInRange ;
 Environment::Environment()
 {
         GatesDefault.append(new clAND(-5000,-1000,2));                                  //Add Gates with instructions on how to use
@@ -363,7 +363,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
     {
         if (bConditionMove == true)
         {
-            if(b->DistanceFromObject(event->scenePos())<25)
+            if(b->DistanceFromObject(event->scenePos())<10)
             {
                 b->update(static_cast<float>(event->scenePos().x()),static_cast<float>(event->scenePos().y()));
                 Environment::update();
@@ -491,7 +491,7 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
     {
         if (bConditionMove == true)
         {
-            if(b->DistanceFromObject(event->scenePos())<25)
+            if(b->DistanceFromObject(event->scenePos())<10)
             {
                 b->update(static_cast<float>(event->scenePos().x()),static_cast<float>(event->scenePos().y()));
                 Environment::update();
@@ -632,10 +632,25 @@ void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     }
 
 
-   if (!bGateMove)
-   {
-        this->UpdateInputs(event);
-   }
+    iInputsInRange = 0 ;
+       for(auto d:this->OffList)
+       {
+           if(d->DistanceFromObject(event->scenePos())<10)
+           {
+               iInputsInRange++;
+           }
+       }
+       for(auto g:this->OnList)
+       {
+           if(g->DistanceFromObject(event->scenePos())<10)
+           {
+               iInputsInRange++;
+           }
+       }
+       if ((bConditionMove)&&(iInputsInRange==1))
+       {
+            this->UpdateInputs(event);
+       }
 
 
 }
