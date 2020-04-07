@@ -11,7 +11,7 @@ class clXOR: public clGate
         QRectF boundingRect() const;
     private:
     protected:
-        bool    fDetermineOuptut();
+        bool    fDetermineOutput();
         void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 

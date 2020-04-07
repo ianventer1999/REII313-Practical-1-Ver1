@@ -62,7 +62,7 @@ void clOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     Q_UNUSED(widget);
 }
 
-bool clOR::fDetermineOuptut()
+bool clOR::fDetermineOutput()
 {
     bool bReturn = false;
 
@@ -74,7 +74,7 @@ bool clOR::fDetermineOuptut()
         }
     }
 
+    bOutput = bReturn;
     return bReturn;
 }
-
 

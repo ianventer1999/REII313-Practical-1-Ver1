@@ -1,7 +1,6 @@
 #ifndef NOR_H
 #define NOR_H
 
-
 #include "gate.h"
 
 class clNOR: public clGate
@@ -13,7 +12,7 @@ class clNOR: public clGate
     private:
 
     protected:
-        bool    fDetermineOuptut();
+        bool    fDetermineOutput();
         void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 

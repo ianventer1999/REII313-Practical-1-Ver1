@@ -62,7 +62,7 @@ void clAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(widget);
 }
 
-bool clAND::fDetermineOuptut()
+bool clAND::fDetermineOutput()
 {
     bool bReturn = true;
 
@@ -74,5 +74,6 @@ bool clAND::fDetermineOuptut()
         }
     }
 
+    this->bOutput = bReturn;
     return bReturn;
 }

@@ -1,18 +1,18 @@
 #ifndef ON_H
 #define ON_H
 
-#include <QGraphicsItem>
-#include <QKeyEvent>
-#include <QPainter>
+#include "gate.h"
 
-class On : public QGraphicsItem
+class clOn : public clGate
 {
-public:
-    On(int X,int Y);
-    double DistanceFromObject(QPointF OtherObject);
-    void update(float x,float y);
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+    public:
+        clOn(int X,int Y);
+        double DistanceFromObject(QPointF OtherObject);
+        void update(float x,float y);
+        QRectF boundingRect() const;
+        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+    protected:
+        bool    fDetermineOutput();
 };
 
 #endif // ON_H

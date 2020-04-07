@@ -63,9 +63,8 @@ void clNOT::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(widget);
 }
 
-bool clNOT::fDetermineOuptut()
+bool clNOT::fDetermineOutput()
 {
+    this->bOutput = !clGate::bInputs.first();
     return !clGate::bInputs.first();
 }
-
-

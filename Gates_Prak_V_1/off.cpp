@@ -1,5 +1,5 @@
 #include "off.h"
-#include <math.h>
+
 
 clOFF::clOFF(int X, int Y)
 {
@@ -14,10 +14,8 @@ double clOFF::DistanceFromObject(QPointF OtherObject)
 
 void clOFF::update(float x, float y)
 {
-
     this->setX(static_cast<double>(x));
     this->setY(static_cast<double>(y));
-
 }
 
 QRectF clOFF::boundingRect() const
@@ -28,8 +26,12 @@ QRectF clOFF::boundingRect() const
 void clOFF::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->drawRect(0,0,6,6);
-
     Q_UNUSED(option);
     Q_UNUSED(widget);
+}
 
+bool clOFF::fDetermineOutput()
+{
+    bOutput = false;
+    return false;
 }
