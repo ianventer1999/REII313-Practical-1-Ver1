@@ -23,14 +23,14 @@ void On::update(float x, float y)
 
 QRectF On::boundingRect() const
 {
-    return QRectF(0,0,10,10);
+    return QRectF(0,0,5,5);
 }
 
 void On::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setBrush(Qt::black);
+    painter->drawRect(0,0,6,6);
 
-    painter->drawRect(0,0,10,10);
     Q_UNUSED(option);
     Q_UNUSED(widget);
 

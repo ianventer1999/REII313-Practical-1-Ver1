@@ -9,11 +9,12 @@ class clOR: public clGate
         clOR(int iXval,int iYval,int iInputCount);
         virtual ~clOR();
         QRectF boundingRect() const;
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+
     private:
 
-protected:
+    protected:
         bool    fDetermineOuptut();
+        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 
 #endif // OR_H

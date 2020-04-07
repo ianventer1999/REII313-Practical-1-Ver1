@@ -14,11 +14,12 @@ class clNAND: public clGate
         clNAND(int iXval,int iYval,int iInputCount);
         virtual ~clNAND();
         QRectF boundingRect() const;
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+
     private:
 
-protected:
+    protected:
         bool    fDetermineOuptut();
+        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 
 #endif // NAND_H

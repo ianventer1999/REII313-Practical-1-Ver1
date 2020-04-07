@@ -10,11 +10,11 @@ class clNOR: public clGate
         clNOR(int iXval,int iYval,int iInputCount);
         virtual ~clNOR();
         QRectF boundingRect() const;
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     private:
 
-protected:
+    protected:
         bool    fDetermineOuptut();
+        void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 
 #endif // NOR_H

@@ -9,10 +9,10 @@ class clXOR: public clGate
         clXOR(int iXval,int iYval,int iInputCount);
         virtual ~clXOR();
         QRectF boundingRect() const;
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     private:
-protected:
+    protected:
         bool    fDetermineOuptut();
+        void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
 
 #endif // XOR_H
