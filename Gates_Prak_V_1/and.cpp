@@ -1,3 +1,4 @@
+
 #include "and.h"
 
 clAND::clAND(int iXval,int iYval,int iInputCount)
@@ -77,3 +78,4 @@ bool clAND::fDetermineOutput()
     this->bOutput = bReturn;
     return bReturn;
 }
+

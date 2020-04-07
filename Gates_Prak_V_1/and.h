@@ -18,3 +18,4 @@ class clAND: public clGate
 };
 
 #endif // AND_H
+

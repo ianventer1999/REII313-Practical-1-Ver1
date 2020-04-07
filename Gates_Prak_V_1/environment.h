@@ -30,6 +30,7 @@ class Environment : public QGraphicsScene
     public:
         Environment();
         ~Environment();
+        void GateInformation(QGraphicsSceneMouseEvent *event);
         void keyPressEvent(QKeyEvent *event);
         void keyReleaseEvent(QKeyEvent *event);
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
@@ -56,3 +57,4 @@ class Environment : public QGraphicsScene
 };
 
 #endif // ENVIRONMENT_H
+

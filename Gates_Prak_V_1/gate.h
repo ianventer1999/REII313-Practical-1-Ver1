@@ -7,7 +7,7 @@
 #include <QList>
 #include <QGraphicsSceneMouseEvent>
 #include <math.h>
-
+#include <QString>
 class clGate: public QGraphicsItem
 {
     public:
@@ -20,6 +20,7 @@ class clGate: public QGraphicsItem
         bool    bActiveInputs[5] = {false};
         QList<bool> bInputs;
         void update(float x,float y);
+        virtual QString GetClassName()=0;
         virtual bool fDetermineOutput()=0;
         virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr)=0;
         bool    bConnectedOut = false; // Has a connector been attached to the output

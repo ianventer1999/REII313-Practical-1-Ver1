@@ -77,3 +77,8 @@ bool clNOR::fDetermineOutput()
     this->bOutput = !bReturn;
     return !bReturn;
 }
+QString clNOR::GetClassName()
+{
+    return "NOR";
+}
+

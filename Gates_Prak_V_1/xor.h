@@ -13,6 +13,7 @@ class clXOR: public clGate
     protected:
         bool    fDetermineOutput();
         void    paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+        QString GetClassName();
 };
 
 #endif // XOR_H

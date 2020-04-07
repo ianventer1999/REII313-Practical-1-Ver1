@@ -88,4 +88,7 @@ bool clXNOR::fDetermineOutput()
         return true;
     }
 }
-
+QString clXNOR::GetClassName()
+{
+    return "XNOR";
+}

@@ -68,3 +68,7 @@ bool clNOT::fDetermineOutput()
     this->bOutput = !clGate::bInputs.first();
     return !clGate::bInputs.first();
 }
+QString clNOT::GetClassName()
+{
+    return "NOT";
+}

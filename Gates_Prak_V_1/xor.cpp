@@ -86,5 +86,7 @@ bool clXOR::fDetermineOutput()
        return false;
    }
 }
-
-
+QString clXOR::GetClassName()
+{
+    return "XOR";
+}

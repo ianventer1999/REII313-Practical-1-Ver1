@@ -79,4 +79,8 @@ bool clNAND::fDetermineOutput()
     this->bOutput = !bReturn;
     return !bReturn; //Return opposite of AND
 }
+QString clNAND::GetClassName()
+{
+    return "NAND";
+}
 

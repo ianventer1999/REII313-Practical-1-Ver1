@@ -78,3 +78,8 @@ bool clOR::fDetermineOutput()
     return bReturn;
 }
 
+QString clOR::GetClassName()
+{
+    return "OR";
+}
+
