@@ -63,7 +63,12 @@ void clXOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(widget);
 }
 
-bool clXOR::fDetermineOutput()
+QString clXOR::GetClassName()
+{
+    return "XOR";
+}
+
+bool clXOR::fDetermineOuptut()
 {
    int  iTrueCounter = 0;
 
@@ -77,16 +82,14 @@ bool clXOR::fDetermineOutput()
 
    if (iTrueCounter == 1) //Mag slegs 1 true he
    {
-       bOutput = true;
        return true;
    }
    else
    {
-       bOutput = true;
-       return false;
+        return false;
    }
 }
-QString clXOR::GetClassName()
-{
-    return "XOR";
-}
+
+
+
+

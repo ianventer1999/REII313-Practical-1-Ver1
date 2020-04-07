@@ -9,9 +9,10 @@
 #include <QPainter>
 #include <QList>
 #include <QGraphicsSceneMouseEvent>
+
 #include <QDrag>
 #include <math.h>
-
+#include <QString>
 #include "and.h"
 #include "or.h"
 #include "not.h"
@@ -22,7 +23,6 @@
 #include "on.h"
 #include "off.h"
 #include "gate.h"
-#include "connector.h"
 
 class Environment : public QGraphicsScene
 {
@@ -30,31 +30,24 @@ class Environment : public QGraphicsScene
     public:
         Environment();
         ~Environment();
-        void GateInformation(QGraphicsSceneMouseEvent *event);
         void keyPressEvent(QKeyEvent *event);
         void keyReleaseEvent(QKeyEvent *event);
+        void GateInformation(QGraphicsSceneMouseEvent *event);
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
         void UpdateInputs(QGraphicsSceneMouseEvent *event);
-        int  iLastMoved = 0;
     public slots:
         void update_scene();
     private:
-        QList<clGate*> Gates;               //List of gates
-        QList<clGate*> Gates_IO;            //List of gates and inputs
-        QList<clConnector*> Connectors;     //List of connectors
-        QList<clGate*> GatesDefault;        //Display Gates
-        QList<clOn*> DefaultOn;             //Display On
-        QList<clOFF*> DefaultOff;           //Display Off
-        QList<clOn*> OnList;                //List of Ons
-        QList<clOFF*> OffList;              //List of offs
-        QList<clGate*> OutList;             //List of outputs
-        QList<clGate*> ConnectList;
+        QList<clGate*> Gates;
+        QList<clGate*> GatesDefault;
+        QList<On*> DefaultOn;
+        QList<clOFF*> DefaultOff;
+        QList<On*> OnList;
+        QList<clOFF*> OffList;
         QTimer  *update_timer;
         int     iInputs;
-        int     iLastPositions[2]; //Stores the last x and y positions
 };
 
 #endif // ENVIRONMENT_H
-

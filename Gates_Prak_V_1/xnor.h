@@ -13,7 +13,7 @@ class clXNOR: public clGate
     private:
 
     protected:
-        bool    fDetermineOutput();
+        bool    fDetermineOuptut();
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
         QString GetClassName();
 };
