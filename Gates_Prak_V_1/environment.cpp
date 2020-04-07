@@ -4,6 +4,7 @@ static  int     iGatePlace;
 static  bool    bGateMove = false;
 static  bool    bConditionMove =false;
 static int      iInputsInRange ;
+QList <QGraphicsTextItem*> Info ;
 Environment::Environment()
 {
         GatesDefault.append(new clAND(-5000,-1000,2));                                  //Add Gates with instructions on how to use
@@ -35,6 +36,28 @@ Environment::Environment()
         {
             text[i]->setPos(-5000+200*i,-950);
         }
+
+
+        Info.append(addText("AND Gate: \nProduces an output which is true only if all its inputs are true"));
+        Info.append(addText("NAND Gate: \nProduces an output which is false only if all its inputs are true"));
+        Info.append(addText("OR Gate \nProduces an output which is true if only one inputs are true" ));
+        Info.append(addText("NOR Gate \nProduces an output which is true if all the inputs are true"));
+        Info.append(addText("XOR Gate \nProduces an output which is true if one, and only one, of the inputs to the gate is true"));
+        Info.append(addText("XNOR Gate \nProduces an output which is false if only one of the inputs to the gate is true"));
+        Info.append(addText("NOT Gate \nInverts the input to the gate"));
+
+
+        this->addItem(Info[0]);
+        for(int i=0;i<Info.size();++i)
+        {
+            Info[i]->setTextWidth(150);
+            Info[i]->setPos(GatesDefault[i]->scenePos());
+            Info[i]->moveBy(0,-100);
+            Info[i]->setVisible(false);
+        }
+
+
+
 
     this->update_timer = new QTimer(this);
     connect(this->update_timer, SIGNAL(timeout()),this,SLOT(update_scene()));
@@ -92,6 +115,76 @@ void Environment ::keyPressEvent(QKeyEvent *event)
 void Environment ::keyReleaseEvent(QKeyEvent *event)
 {
     Q_UNUSED(event)
+}
+
+void Environment::GateInformation(QGraphicsSceneMouseEvent *event)
+{
+
+    QString sGateClassType;
+    for(auto g:this->GatesDefault)
+    {
+      sGateClassType = g->GetClassName();
+      if (g->DistanceFromObject(event->scenePos())<80)
+      {
+         if(g->GetClassName()=="AND")
+         {
+            Info[0]->setVisible(true);
+         }
+         else
+         {
+           Info[0]->setVisible(false);
+         }
+         if(g->GetClassName()=="NAND")
+         {
+            Info[1]->setVisible(true);
+         }
+         else
+         {
+           Info[1]->setVisible(false);
+         }
+         if(g->GetClassName()=="OR")
+         {
+            Info[2]->setVisible(true);
+         }
+         else
+         {
+           Info[2]->setVisible(false);
+         }
+         if(g->GetClassName()=="NOR")
+         {
+            Info[3]->setVisible(true);
+         }
+         else
+         {
+           Info[3]->setVisible(false);
+         }
+         if(g->GetClassName()=="XOR")
+         {
+            Info[4]->setVisible(true);
+         }
+         else
+         {
+           Info[4]->setVisible(false);
+         }
+         if(g->GetClassName()=="XNOR")
+         {
+            Info[5]->setVisible(true);
+         }
+         else
+         {
+           Info[5]->setVisible(false);
+         }
+         if(g->GetClassName()=="NOT")
+         {
+            Info[6]->setVisible(true);
+         }
+         else
+         {
+           Info[6]->setVisible(false);
+         }
+
+      }
+    }
 }
 
 void Environment ::update_scene()
@@ -615,7 +708,8 @@ void Environment::UpdateInputs(QGraphicsSceneMouseEvent *event)
 
 
 void Environment::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{    
+{
+    GateInformation(event);
     for (auto b:this->Gates)
     {
 

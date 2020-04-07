@@ -63,6 +63,11 @@ void clNOT::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(widget);
 }
 
+QString clNOT::GetClassName()
+{
+    return "NOT";
+}
+
 bool clNOT::fDetermineOuptut()
 {
     return !clGate::bInputs.first();

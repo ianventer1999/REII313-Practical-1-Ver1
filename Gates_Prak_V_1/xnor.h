@@ -15,6 +15,7 @@ class clXNOR: public clGate
     protected:
         bool    fDetermineOuptut();
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+        QString GetClassName();
 };
 
 #endif // XNOR_H

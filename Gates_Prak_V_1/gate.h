@@ -6,7 +6,7 @@
 #include <QPainter>
 #include <QList>
 #include <QGraphicsSceneMouseEvent>
-
+#include <QString>
 class clGate: public QGraphicsItem
 {
     public:
@@ -16,6 +16,8 @@ class clGate: public QGraphicsItem
         int     iInputCount;
         int     iMaxInput = 5;
         int     iActiveInputs =0;
+        virtual QString GetClassName()=0;
+
         bool    bActiveInputs[5] = {false};
         QList<bool> bInputs;
         void update(float x,float y);
@@ -25,6 +27,7 @@ class clGate: public QGraphicsItem
         bool    bOutput;
     protected:
         void    pUpdateInputCount(int);
+
 };
 
 #endif // GATE_H

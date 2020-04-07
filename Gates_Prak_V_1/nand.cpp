@@ -64,6 +64,11 @@ void clNAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(widget);
 }
 
+QString clNAND::GetClassName()
+{
+    return "NAND";
+}
+
 bool clNAND::fDetermineOuptut()
 {
     bool bReturn = true;
