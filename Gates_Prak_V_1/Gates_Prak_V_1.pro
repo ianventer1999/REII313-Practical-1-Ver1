@@ -36,8 +36,7 @@ SOURCES += \
     xor.cpp \
     xnor.cpp \
     on.cpp \
-    off.cpp \
-    connector.cpp
+    off.cpp
 
 HEADERS += \
     environment.h \
@@ -50,8 +49,7 @@ HEADERS += \
     xor.h \
     xnor.h \
     on.h \
-    off.h \
-    connector.h
+    off.h
 
 FORMS += \
         mainwindow.ui

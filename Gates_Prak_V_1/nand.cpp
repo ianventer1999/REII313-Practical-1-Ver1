@@ -64,7 +64,12 @@ void clNAND::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(widget);
 }
 
-bool clNAND::fDetermineOutput()
+QString clNAND::GetClassName()
+{
+    return "NAND";
+}
+
+bool clNAND::fDetermineOuptut()
 {
     bool bReturn = true;
 
@@ -76,11 +81,8 @@ bool clNAND::fDetermineOutput()
         }
     }
 
-    this->bOutput = !bReturn;
     return !bReturn; //Return opposite of AND
 }
-QString clNAND::GetClassName()
-{
-    return "NAND";
-}
+
+
 
