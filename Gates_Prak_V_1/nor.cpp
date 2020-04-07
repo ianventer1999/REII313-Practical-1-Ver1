@@ -62,12 +62,7 @@ void clNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(widget);
 }
 
-QString clNOR::GetClassName()
-{
-    return "NOR";
-}
-
-bool clNOR::fDetermineOuptut()
+bool clNOR::fDetermineOutput()
 {
     bool bReturn = false;
 
@@ -79,6 +74,11 @@ bool clNOR::fDetermineOuptut()
         }
     }
 
-    return! bReturn;
+    this->bOutput = !bReturn;
+    return !bReturn;
+}
+QString clNOR::GetClassName()
+{
+    return "NOR";
 }
 

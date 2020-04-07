@@ -65,12 +65,7 @@ void clXNOR::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(widget);
 }
 
-QString clXNOR::GetClassName()
-{
-    return "XNOR";
-}
-
-bool clXNOR::fDetermineOuptut()
+bool clXNOR::fDetermineOutput()
 {
     int  iTrueCounter = 0;
 
@@ -84,12 +79,16 @@ bool clXNOR::fDetermineOuptut()
 
     if (iTrueCounter == 1) //Opposite of XOR
     {
+        bOutput = false;
         return false;
     }
     else
     {
-         return true;
+        bOutput = true;
+        return true;
     }
 }
-
-
+QString clXNOR::GetClassName()
+{
+    return "XNOR";
+}

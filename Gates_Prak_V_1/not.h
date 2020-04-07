@@ -12,9 +12,10 @@ class clNOT: public clGate
     private:
 
     protected:
-        bool    fDetermineOuptut();
+        bool    fDetermineOutput();
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
         QString GetClassName();
 };
 
 #endif // NOT_H
+

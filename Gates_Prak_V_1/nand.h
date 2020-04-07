@@ -1,11 +1,6 @@
 #ifndef NAND_H
 #define NAND_H
 
-
-#include <QGraphicsItem>
-#include <QKeyEvent>
-#include <QPainter>
-
 #include "gate.h"
 
 class clNAND: public clGate
@@ -18,7 +13,7 @@ class clNAND: public clGate
     private:
 
     protected:
-        bool    fDetermineOuptut();
+        bool    fDetermineOutput();
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
         QString GetClassName();
 };
