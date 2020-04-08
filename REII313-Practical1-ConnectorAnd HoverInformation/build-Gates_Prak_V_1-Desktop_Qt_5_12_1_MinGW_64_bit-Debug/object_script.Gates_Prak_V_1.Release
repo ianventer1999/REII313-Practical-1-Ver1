@@ -1,0 +1,11 @@
+release/main.o
+release/environment.o
+release/gate.o
+release/and.o
+release/or.o
+release/not.o
+release/nand.o
+release/nor.o
+release/xor.o
+release/xnor.o
+release/moc_environment.o
