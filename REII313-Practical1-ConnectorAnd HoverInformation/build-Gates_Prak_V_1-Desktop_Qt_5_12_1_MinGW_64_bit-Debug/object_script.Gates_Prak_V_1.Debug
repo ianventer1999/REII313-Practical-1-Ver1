@@ -1,0 +1,11 @@
+debug/main.o
+debug/environment.o
+debug/gate.o
+debug/and.o
+debug/or.o
+debug/not.o
+debug/nand.o
+debug/nor.o
+debug/xor.o
+debug/xnor.o
+debug/moc_environment.o
